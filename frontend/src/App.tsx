@@ -1,12 +1,24 @@
-import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import { Link, Route, BrowserRouter as Router } from 'react-router-dom';
+import Home from './home/Home'
+import Auth from './auth/Auth'
 
-import Home from './home/Home';
-import Auth from './auth/Auth';
-import ProductionList from './production-list/ProductionList';
+interface AppProps {}
 
-const App: React.FC = () => {
+function App({}: AppProps) {
+  // Create the count state.
+  const [count, setCount] = useState(0);
+  // Create the counter (+1 every second).
+  useEffect(() => {
+    const timer = setTimeout(() => setCount(count + 1), 1000);
+    return () => clearTimeout(timer);
+  }, [count, setCount]);
+  // Return the App component.
   return (
+    <div className="App">
+    <Router>
     <div>
       <nav className="navbar navbar-light">
         <ul className="nav navbar-nav">
@@ -15,9 +27,6 @@ const App: React.FC = () => {
           </li>
           <li>
             <Link to="/auth">Log in</Link>
-          </li>
-          <li>
-            <Link to="/production-list">Production List</Link>
           </li>
         </ul>
       </nav>
@@ -28,11 +37,29 @@ const App: React.FC = () => {
       <Route path="/auth">
         <Auth />
       </Route>
-      <Route path="/production-list">
-        <ProductionList />
-      </Route>
+    </div>
+    </Router>
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <p>
+          Page has been open for <code>{count}</code> seconds.
+        </p>
+        <p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </p>
+      </header>
     </div>
   );
-};
+}
 
 export default App;
