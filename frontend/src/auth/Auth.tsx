@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ReactElement, useState } from 'react';
 
-const Auth: React.FC = () => (
+const Auth = (): ReactElement => (
   <div>
     <h1>Auth</h1>
   </div>
