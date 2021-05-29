@@ -7,6 +7,7 @@ export default {
   plugins: [
     '@snowpack/plugin-react-refresh',
     '@snowpack/plugin-dotenv',
+    '@canarise/snowpack-eslint-plugin',
     [
       '@snowpack/plugin-typescript',
       {
