@@ -5,7 +5,10 @@ import App from './App';
 
 describe('App tests', () => {
   it('tests the app', () => {
-    const app = render(<App />);
-    expect(app).to.contain(/dupa/i);
+    const { getAllByText } = render(<App />);
+    const home = getAllByText('Home');
+    for (let h of home) {
+      expect(h.textContent).to.be.equal('Home');
+    }
   });
 });
