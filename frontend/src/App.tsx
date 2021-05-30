@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
-import './App.css';
-import { Link, Route, BrowserRouter as Router } from 'react-router-dom';
-import Home from './home/Home'
-import Auth from './auth/Auth'
+import style from './App.module.css';
+import { Link, Route, BrowserRouter as Router, NavLink } from 'react-router-dom';
+import Home from './home/Home';
+import Auth from './auth/Auth';
 
 interface AppProps {}
 
@@ -18,27 +18,31 @@ function App({}: AppProps) {
   // Return the App component.
   return (
     <div className="App">
-    <Router>
-    <div>
-      <nav className="navbar navbar-light">
-        <ul className="nav navbar-nav">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/auth">Log in</Link>
-          </li>
-        </ul>
-      </nav>
+      <Router>
+        <div>
+          <nav className={style.navbar}>
+            <ul className={style.navbarNav}>
+              <li>
+                <NavLink exact to="/" activeClassName={style.navbarBold}>
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/auth" activeClassName={style.navbarBold}>
+                  Login
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
 
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route path="/auth">
-        <Auth />
-      </Route>
-    </div>
-    </Router>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/auth">
+            <Auth />
+          </Route>
+        </div>
+      </Router>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -48,12 +52,7 @@ function App({}: AppProps) {
           Page has been open for <code>{count}</code> seconds.
         </p>
         <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
             Learn React
           </a>
         </p>
