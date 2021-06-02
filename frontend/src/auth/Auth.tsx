@@ -1,25 +1,19 @@
 import React, { ReactElement, useState } from 'react';
+import { TITLE, SUCCESS_MESSAGE } from './Constants';
+import AuthForm from './AuthForm';
+import onAuthSubmit from './AuthSubmit';
 
 const Auth = (): ReactElement => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return isLoggedIn ? (
     <div>
-      <h1>Auth</h1>
-      <p>You were successfully logged in</p>
+      <h1>{TITLE}</h1>
+      <p>{SUCCESS_MESSAGE}</p>
     </div>
   ) : (
     <div>
-      <h1>Auth</h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          setIsLoggedIn(true);
-        }}
-      >
-        <input type="text" aria-label="Username" />
-        <input type="password" aria-label="Password" />
-        <button type="submit">Login</button>
-      </form>
+      <h1>{TITLE}</h1>
+      <AuthForm onSubmit={onAuthSubmit} onSuccess={setIsLoggedIn} />
     </div>
   );
 };

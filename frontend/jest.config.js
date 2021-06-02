@@ -1,6 +1,6 @@
 const { defaults: tsjPreset } = require('ts-jest/presets');
 module.exports = {
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?|js?|ts?)$',
   transform: {
     ...tsjPreset.transform,
   },
