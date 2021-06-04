@@ -1,3 +1,2 @@
-const BACKEND_URL = 'localhost:3001';
-
-export { BACKEND_URL };
+export const BACKEND_URL = '/api';
+export const AUTH = '/auth';

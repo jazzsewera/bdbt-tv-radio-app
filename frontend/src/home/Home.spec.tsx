@@ -1,9 +1,9 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
-import Home from './Home';
-import { LOGIN_BUTTON_TEXT } from './Constants';
 import { BrowserRouter as MockRouter, Route } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
+import Home from './Home';
+import { LOGIN_BUTTON_TEXT } from './Constants';
 
 describe('Home screen tests', () => {
   beforeEach(() => {
