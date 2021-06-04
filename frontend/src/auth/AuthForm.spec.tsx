@@ -1,23 +1,21 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import AuthForm from './AuthForm';
+import AuthForm, { AuthFormProps } from './AuthForm';
 
 describe('AuthForm tests', () => {
   const loginString = 'login';
   const passwordString = 'password';
 
-  const onSubmitMock = (login: string, password: string) => {
-    expect(login).toEqual(loginString);
-    expect(password).toEqual(passwordString);
-  };
-
-  const onSuccessMock = (success: boolean) => {
-    if (!success) fail();
+  const mockProps: AuthFormProps = {
+    onSubmit: (login, password) => {
+      expect(login).toEqual(loginString);
+      expect(password).toEqual(passwordString);
+    },
   };
 
   beforeEach(() => {
-    render(<AuthForm onSubmit={onSubmitMock} onSuccess={onSuccessMock} />);
+    render(<AuthForm {...mockProps} />);
   });
 
   afterEach(() => {

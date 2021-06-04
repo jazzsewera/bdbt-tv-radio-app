@@ -1,6 +1,6 @@
 import React from 'react';
-import style from './App.module.css';
 import { Route, BrowserRouter as Router, NavLink } from 'react-router-dom';
+import style from './App.module.css';
 import Home from './home/Home';
 import Auth from './auth/Auth';
 
