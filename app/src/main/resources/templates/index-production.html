@@ -1,9 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:sec="http://thymeleaf.org" xmlns:th="http://thymeleaf.org">
 <head th:replace="base :: base_header(~{::title},~{})">
     <title>Productions - BDBT TV Radio</title>
 </head>
 <body>
-Productions
+<div>
+    <h1>Productions</h1>
+    <a href="/production/new" sec:authorize="hasRole('ADMIN')">New production</a> <br/> <br/>
+    <table>
+        <thead>
+        <tr>
+            <th>Production ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Client Company ID</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="production:${listPerson}">
+            <td th:text="${production.production_id}">Production ID</td>
+            <td th:text="${production.title}">Title</td>
+            <td th:text="${production.description}">Description</td>
+            <td th:text="${production.client_company_id}">Client Company ID</td>
+
+            <td>
+                <a sec:authorize="hasRole('ADMIN')" th:href="@{'/production/edit/' + ${production.production_id}}">Edit</a>
+                <a sec:authorize="hasRole('ADMIN')" th:href="@{'/production/delete/' + ${production.production_id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

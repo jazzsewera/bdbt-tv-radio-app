@@ -1,9 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:sec="http://thymeleaf.org" xmlns:th="http://thymeleaf.org">
 <head th:replace="base :: base_header(~{::title},~{})">
     <title>Tasks - BDBT TV Radio</title>
 </head>
 <body>
-Tasks
+<div>
+    <h1>Tasks</h1>
+    <a href="/task/new" sec:authorize="hasRole('ADMIN')">New task</a> <br/> <br/>
+    <table>
+        <thead>
+        <tr>
+            <th>Task ID</th>
+            <th>Employee ID</th>
+            <th>Person ID</th>
+            <th>Production ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task:${listTask}">
+            <td th:text="${task.task_id}">Task ID</td>
+            <td th:text="${task.employee_id}">Employee ID</td>
+            <td th:text="${task.person_id}">Person ID</td>
+            <td th:text="${task.production_id}">Production ID</td>
+            <td th:text="${task.title}">Title</td>
+            <td th:text="${task.description}">Description</td>
+            <td th:text="${task.status}">Status</td>
+            <td th:text="${task.date}">Date</td>
+
+            <td>
+                <a sec:authorize="hasRole('ADMIN')" th:href="@{'/task/edit/' + ${task.task_id}}">Edit</a>
+                <a sec:authorize="hasRole('ADMIN')" th:href="@{'/task/delete/' + ${task.task_id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
