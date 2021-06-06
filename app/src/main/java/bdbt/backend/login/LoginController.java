@@ -10,11 +10,6 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping("/login-retry")
-    public String viewLoginRetryPage() {
-        return "login-retry";
-    }
-
     @RequestMapping("/logout")
     public String viewLoginPageAfterLogout() {
         return "login";
