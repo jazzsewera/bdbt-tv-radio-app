@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://thymeleaf.org">
+<head th:replace="base :: base_header(~{::title},~{})">
+    <title>People - BDBT TV Radio</title>
+</head>
+<body>
+<div>
+    <h1>People</h1>
+    <a sec:authorize="hasRole('ADMIN')" href="/person/new">New person</a> <br/> <br/>
+    <table class="content-table">
+        <thead>
+        <tr>
+            <th>Person ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Company ID</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="person:${listPerson}">
+            <td th:text="${person.person_id}">Person ID</td>
+            <td th:text="${person.name}">Name</td>
+            <td th:text="${person.surname}">Surname</td>
+            <td th:text="${person.company_id}">Company ID</td>
+
+            <td><a sec:authorize="hasRole('ADMIN')"
+                   th:href="@{'/person/edit/' + ${person.person_id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp; <a sec:authorize="hasRole('ADMIN')"
+                                            th:href="@{'/person/delete/' + ${person.person_id}}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
