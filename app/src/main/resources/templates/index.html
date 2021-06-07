@@ -4,8 +4,22 @@
     <title>BDBT - TV and Radio Production App</title>
 </head>
 <body>
-Hello, you can now <a href="/logout">logout</a>.
-You can also go to <a href="/person">People view</a>,
-<a href="/production">Productions view</a>, or <a href="/task">Tasks view</a>.
+<nav th:replace="navbar :: navbar"></nav>
+<div class="container">
+    <main>
+        <div class="py-5 row d-grid g-5">
+            <div class="col-12">
+                <h1 class="display-4">BDBT - TV and Radio Production App</h1>
+            </div>
+            <div class="col-12">
+                <h2>Hello!</h2>
+                <p class="lead">
+                    You can go to <a href="/person">People</a>, <a href="/production">Productions</a>,
+                    or <a href="/task">Tasks</a> views.
+                </p>
+            </div>
+        </div>
+    </main>
+</div>
 </body>
 </html>

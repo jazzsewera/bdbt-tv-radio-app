@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head th:replace="base :: base_header(~{::title},~{::link})">
     <title>Sign in - BDBT TV Radio</title>
-    <link rel="stylesheet" th:href="@{css/login.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 <body class="text-center">
 <div th:if="${param.logout != null}" class="alert alert-info alert-dismissible fade show position-absolute top-0 start-50 translate-middle-x mt-5 pl-4 pr-5" role="alert">

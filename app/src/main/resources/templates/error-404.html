@@ -1,9 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head th:replace="base :: base_header(~{::title},~{})">
-    <title>Error 404 - BDBT TV Radio</title>
+    <title>Page not found - BDBT TV Radio</title>
 </head>
 <body>
-Error 404
+<nav th:replace="navbar :: navbar"></nav>
+<div class="container">
+    <main>
+        <div class="py-5 row d-grid g-5">
+            <div class="col-12">
+                <h1 class="display-2">404 Not Found</h1>
+            </div>
+            <div class="col-12">
+                <h2>What happened?</h2>
+                <p>
+                    The page you requested could not be found.
+                </p>
+            </div>
+            <div class="col-12">
+                <h2>Why did it happen?</h2>
+                <p>
+                    Probably because of a typo in the URL. It is also possible
+                    that somewhere on this site there is a broken link.
+                </p>
+            </div>
+            <div class="col-12">
+                <h2>What can I do?</h2>
+                <p>
+                    You can check the url if it does not contain any misspelled words,
+                    or try going back to the <a href="/">Homepage</a>,
+                    <a href="/person">People</a>, <a href="/production">Productions</a>,
+                    or <a href="/task">Tasks</a>. If it does not help,
+                    it means there is a problem with this site.
+                </p>
+            </div>
+            <div class="col-12">
+                <h2>I want to know more</h2>
+                <p>
+                    There are a lot of good resources where you can learn more about
+                    HTTP response codes. Our favorite is <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404">Mozilla's web doc on 404
+                    Status Code</a>.
+                </p>
+            </div>
+        </div>
+    </main>
+</div>
 </body>
 </html>

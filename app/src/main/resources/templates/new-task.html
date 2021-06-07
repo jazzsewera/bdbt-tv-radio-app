@@ -1,9 +1,73 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-<head th:replace="base :: base_header(~{::title},~{})">
+<head th:replace="base :: base_header(~{::title},~{::link})">
     <title>New task - BDBT TV Radio</title>
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
 </head>
-<body>
-New task
+<body class="bg-light">
+<nav th:replace="navbar :: navbar"></nav>
+<div class="container container-form">
+    <main>
+        <div class="py-5 text-center">
+            <h2>New task</h2>
+            <p class="lead">
+                A task entity represent an activity that an employee can
+                perform in order to make progress in a production.
+            </p>
+        </div>
+        <div class="row g-5">
+            <div class="col-sm-12">
+                <form action="#" method="post" th:action="@{/task/save}" th:object="${task}">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label" for="task_id">Task ID</label>
+                            <input class="form-control" id="task_id" placeholder="" th:field="*{task_id}"
+                                   type="text" value=""/>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="employee_id">Employee ID</label>
+                            <input class="form-control" id="employee_id" placeholder="" th:field="*{employee_id}"
+                                   type="text" value=""/>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="person_id">Person ID</label>
+                            <input class="form-control" id="person_id" placeholder="" th:field="*{person_id}"
+                                   type="text" value=""/>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="production_id">Production ID</label>
+                            <input class="form-control" id="production_id" placeholder="" th:field="*{production_id}"
+                                   type="text" value=""/>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="title">Title</label>
+                            <input class="form-control" id="title" placeholder="" th:field="*{title}" type="text"
+                                   value=""/>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="description">Description</label>
+                            <textarea class="form-control" id="description" placeholder="" rows="3"
+                                      th:field="*{description}"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="status">Status</label>
+                            <select class="form-select" id="status" th:field="*{status}" aria-label="Select status">
+                                <option selected value="TODO">To do</option>
+                                <option value="IN_PROGRESS">In progress</option>
+                                <option value="DONE">Done</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="deadline">Deadline</label>
+                            <input class="form-control" id="deadline" th:field="*{deadline}" type="date" />
+                        </div>
+                    </div>
+                    <hr class="my-4"/>
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">Add task</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
 </body>
 </html>

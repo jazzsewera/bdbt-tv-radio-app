@@ -1,9 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head th:replace="base :: base_header(~{::title},~{})">
-    <title>Error 500 - BDBT TV Radio</title>
+    <title>Internal Server Error - BDBT TV Radio</title>
 </head>
 <body>
-Error 500
+<nav th:replace="navbar :: navbar"></nav>
+<div class="container">
+    <main>
+        <div class="py-5 row d-grid g-3">
+            <div class="col-12">
+                <h1 class="display-2">500 Internal Server Error</h1>
+            </div>
+            <div class="col-12">
+                <h2>What happened?</h2>
+                <p>
+                    The server encountered an unexpected situation that it could
+                    not handle.
+                </p>
+            </div>
+            <div class="col-12">
+                <h2>Why did it happen?</h2>
+                <p>
+                    Probably because you violated the database constraints, e.g.
+                    tried to add an entity with an existing id, or set the foreign
+                    key to a nonexistent one.
+                </p>
+            </div>
+            <div class="col-12">
+                <h2>What can I do?</h2>
+                <p>
+                    You can go back to the <a href="/">Homepage</a>,
+                    <a href="/person">People</a>, <a href="/production">Productions</a>,
+                    or <a href="/task">Tasks</a>, and try again. If it does not help,
+                    it means there is a problem with this site.
+                </p>
+            </div>
+            <div class="col-12">
+                <h2>I want to know more</h2>
+                <p>
+                    There are a lot of good resources where you can learn more about
+                    HTTP response codes. Our favorite is <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500">Mozilla's web doc on 500
+                    Status Code</a>.
+                </p>
+            </div>
+        </div>
+    </main>
+</div>
 </body>
 </html>

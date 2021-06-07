@@ -1,0 +1,7 @@
+.container {
+    max-width: 960px;
+}
+
+.container-form {
+    max-width: 768px !important;
+}

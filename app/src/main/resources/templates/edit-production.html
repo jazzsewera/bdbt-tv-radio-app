@@ -1,9 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-<head th:replace="base :: base_header(~{::title},~{})">
+<head th:replace="base :: base_header(~{::title},~{::link})">
     <title>Edit production - BDBT TV Radio</title>
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
 </head>
-<body>
-Edit production
+<body class="bg-light">
+<nav th:replace="navbar :: navbar"></nav>
+<div class="container container-form">
+    <main>
+        <div class="py-5 text-center">
+            <h2>Edit production</h2>
+            <p class="lead">
+                A production entity is the core product of the company. It represents
+                a complete package requested by a customer that is contracted and currently
+                under making.
+            </p>
+        </div>
+        <div class="row g-5">
+            <div class="col-sm-12">
+                <form action="#" method="post" th:action="@{/production/update}" th:object="${production}">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label" for="production_id">Production ID</label>
+                            <input class="form-control" id="production_id" placeholder="" th:field="*{production_id}"
+                                   type="text" value="" readonly/>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="title">Title</label>
+                            <input class="form-control" id="title" placeholder="" th:field="*{title}" type="text"
+                                   value=""/>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="description">Description</label>
+                            <textarea class="form-control" id="description" placeholder="" rows="3"
+                                      th:field="*{description}"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="client_company_id">Client Company ID</label>
+                            <input class="form-control" id="client_company_id" placeholder=""
+                                   th:field="*{client_company_id}" type="text" value=""/>
+                        </div>
+                    </div>
+                    <hr class="my-4"/>
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">Done</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
 </body>
 </html>

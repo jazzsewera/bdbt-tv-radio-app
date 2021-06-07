@@ -28,7 +28,7 @@ public class TaskDAO {
 
     public void save(Task task) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
-        insertActor.withTableName("task").usingColumns("task_id", "name", "surname", "company_id");
+        insertActor.withTableName("task").usingColumns("task_id", "employee_id", "person_id", "production_id", "title", "description", "status", "deadline");
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(task);
         insertActor.execute(param);
     }

@@ -1,36 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:sec="http://thymeleaf.org" xmlns:th="http://thymeleaf.org">
-<head th:replace="base :: base_header(~{::title},~{})">
+<head th:replace="base :: base_header(~{::title},~{::link})">
     <title>People - BDBT TV Radio</title>
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
 </head>
 <body>
-<div>
-    <h1>People</h1>
-    <a href="/person/new" sec:authorize="hasRole('ADMIN')">New person</a> <br/> <br/>
-    <table>
-        <thead>
-        <tr>
-            <th>Person ID</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Company ID</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="person:${listPerson}">
-            <td th:text="${person.person_id}">Person ID</td>
-            <td th:text="${person.name}">Name</td>
-            <td th:text="${person.surname}">Surname</td>
-            <td th:text="${person.company_id}">Company ID</td>
+<nav th:replace="navbar :: navbar"></nav>
+<div class="container">
+    <main>
+        <div class="py-5 text-center">
+            <h2>People</h2>
+            <p class="lead">
+                Here you can have a preview of every person that may be
+                involved in any production that took place in the company.
+            </p>
+        </div>
+        <table class="table table-striped align-middle">
+            <thead>
+            <tr>
+                <th scope="col">Person ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Company ID</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="person:${listPerson}">
+                <td th:text="${person.person_id}">Person ID</td>
+                <td th:text="${person.name}">Name</td>
+                <td th:text="${person.surname}">Surname</td>
+                <td th:text="${person.company_id}">Company ID</td>
 
-            <td>
-                <a sec:authorize="hasRole('ADMIN')" th:href="@{'/person/edit/' + ${person.person_id}}">Edit</a>
-                <a sec:authorize="hasRole('ADMIN')" th:href="@{'/person/delete/' + ${person.person_id}}">Delete</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+                <td>
+                    <a class="btn btn-outline-primary" sec:authorize="hasRole('ADMIN')" th:href="@{'/person/edit/' + ${person.person_id}}"><i class="bi bi-pen"></i></a>
+                    <a class="btn btn-outline-danger" sec:authorize="hasRole('ADMIN')" th:href="@{'/person/delete/' + ${person.person_id}}"><i class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="py-2 d-grid gap-2 d-md-block">
+            <a class="btn btn-primary" href="/person/new" sec:authorize="hasRole('ADMIN')"><i class="bi bi-plus"></i> New person</a>
+        </div>
+    </main>
 </div>
 </body>
 </html>
